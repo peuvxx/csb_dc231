@@ -160,7 +160,8 @@
 }
 
 .footer {
-  color: white;
+  background color: white;
+  color: black;
   font-size: 0.875rem;
   container-type: inline-size;
   container-name: footer;
@@ -181,7 +182,7 @@
     // > * {
     //   flex: 1;
     // }
-    padding-block: 4rem;
+  
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 24px;

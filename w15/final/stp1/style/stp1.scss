@@ -1,0 +1,229 @@
+$min-height: 2rem;
+$progressBar-height: 1rem;
+$wrapper-padding-inline: 2rem;
+$padding-inline: 2rem;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+  .light {
+    transition: 0.35s;
+  }
+
+  .light :hover {
+    text-shadow: 0 0 15px;
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-size: 1.1875rem;
+  font-family: "Cormorant Garamond", serif;
+  line-height: 1.5;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: calc(80ch + 2 * $padding-inline);
+  min-height: max(70dvh, $min-height);
+  margin-inline: auto;
+  padding-inline: $padding-inline;
+}
+
+header {
+  text-align: center;
+  text-wrap: balance;
+  word-break: keep-all;
+  font-size: 50px;
+}
+
+//section:nth-of-type(odd) {//
+//background-color: cadetblue;}//
+
+.stickyWrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: fit-content(0) 1fr;
+  grid-template-rows: 1fr;
+}
+main {
+  z-index: 1;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+aside {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  grid-column: 1;
+  grid-row: 1;
+  width: fit-content;
+  padding-inline: 1rem 1.5rem;
+  background-color: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(0.25rem);
+  height: max(100dvh, $min-height);
+  border-radius: 0 1rem 1rem 0;
+  font-size: 0.875rem;
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: white;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.125rem;
+        border-radius: 999999999px;
+        border: 0.125rem solid white;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+  .light {
+    transition: 0.35s;
+  }
+
+  .light :hover {
+    text-shadow: 0 0 25px;
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+.progressBar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  width: 100%;
+  height: $progressBar-height;
+  background-color: rgb(152, 152, 152);
+  .indicator {
+    position: absolute;
+    inset: 0;
+    transform-origin: left;
+    //transform: scaleX(50%);//
+    background-color: rgb(59, 97, 108);
+  }
+}
+
+footer {
+  .wrapper {
+    min-height: max(100dvh, $min-height);
+  }
+}
+
+@media (width < 67.5rem) {
+  .stickyWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+
+  main {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  aside {
+    top: $progressBar-height;
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    padding-inline: unset;
+    padding-block: 1rem;
+    height: fit-content;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    border-radius: 0 0 1rem 1rem;
+
+    .light li {
+      transition: 0.35s;
+    }
+
+    .light li:hover {
+      text-shadow: 0 0 15px;
+      -moz-transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      -o-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+
+    ol {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 3rem;
+      a:first-of-type li {
+        margin-left: $wrapper-padding-inline;
+      }
+      a:last-of-type li {
+        margin-right: $wrapper-padding-inline;
+      }
+    }
+  }
+
+  .progressBar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (width < 59.1875rem) {
+  aside {
+    ol {
+      justify-content: flex-start;
+    }
+  }
+}
+
+span:hover {
+  background-color: rgb(59, 97, 108);
+}
+
+footer {
+  font-size: 50px;
+  text-align: center;
+}

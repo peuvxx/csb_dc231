@@ -4,15 +4,10 @@
   box-sizing: border-box;
 }
 
-.hide {
-  display: none;
-}
-.hide .light {
-  transition: 0.35s;
-}
-.hide .light :hover {
-  text-shadow: 0 0 15px;
-  transform: scale(1.05);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -20,11 +15,80 @@ html {
   scroll-behavior: smooth;
 }
 
+.container {
+  /* background-color: green; */
+  max-width: 1248px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.wrapper {
+  padding-block: 64px;
+}
+
+.button {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgb(125, 125, 125);
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+}
+.button--type-text {
+  background-color: unset;
+  color: rgb(255, 255, 0);
+  padding-inline: 0;
+}
+
+.nav {
+  background-color: rgb(255, 255, 0);
+  color: black;
+  font-weight: 700;
+  container-type: inline-size;
+  container-name: nav;
+}
+.nav .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block: 12px;
+}
+.nav__menuWrapper {
+  gap: 24px;
+  align-items: baseline;
+  display: flex;
+}
+.nav .lt680px {
+  display: none;
+}
+@container nav (width < 42.5rem) {
+  .nav__menuWrapper {
+    display: none;
+  }
+  .nav .lt680px {
+    display: unset;
+  }
+}
+
+.main__media {
+  aspect-ratio: 16/9;
+  background-color: rgb(208, 233, 255);
+  overflow: hidden;
+}
+.main__media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 body {
   margin: 0;
   font-size: 1.1875rem;
-  font-family: "Cormorant Garamond", serif;
   line-height: 1.5;
+  font-family: "Press Start 2P", cursive;
 }
 
 .wrapper {
@@ -35,6 +99,7 @@ body {
   min-height: max(70dvh, 2rem);
   margin-inline: auto;
   padding-inline: 2rem;
+  padding-block: 4rem;
 }
 
 header {
@@ -42,13 +107,7 @@ header {
   text-wrap: balance;
   word-break: keep-all;
   font-size: 50px;
-}
-
-.stickyWrapper {
-  position: relative;
-  display: grid;
-  grid-template-columns: fit-content(0) 1fr;
-  grid-template-rows: 1fr;
+  color: rgb(255, 255, 0);
 }
 
 main {
@@ -127,60 +186,17 @@ aside .light :hover {
   background-color: rgb(59, 97, 108);
 }
 
-footer .wrapper {
-  min-height: max(100dvh, 2rem);
-}
-
 @media (width < 67.5rem) {
   .stickyWrapper {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
   }
-  main {
-    grid-column: 1;
-    grid-row: 3;
-  }
-  aside {
-    top: 1rem;
-    grid-column: 1;
-    grid-row: 3;
-    width: 100%;
-    padding-inline: unset;
-    padding-block: 1rem;
-    height: -moz-fit-content;
-    height: fit-content;
-    overflow-x: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    border-radius: 0 0 1rem 1rem;
-  }
-  aside::-webkit-scrollbar {
-    display: none;
-  }
-  aside .light li {
-    transition: 0.35s;
-  }
-  aside .light li:hover {
-    text-shadow: 0 0 15px;
-    transform: scale(1.05);
-  }
-  aside ol {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 3rem;
-  }
-  aside ol a:first-of-type li {
-    margin-left: 2rem;
-  }
-  aside ol a:last-of-type li {
-    margin-right: 2rem;
-  }
-  .progressBar {
-    grid-column: 1;
-    grid-row: 1;
-  }
 }
+main {
+  grid-column: 1;
+  grid-row: 3;
+}
+
 @media (width < 59.1875rem) {
   aside ol {
     justify-content: flex-start;
@@ -190,7 +206,50 @@ span:hover {
   background-color: rgb(59, 97, 108);
 }
 
-footer {
-  font-size: 50px;
-  text-align: center;
+.footer {
+  background-color: rgb(125, 125, 125);
+  color: rgb(255, 255, 0);
+  font-size: 0.875rem;
+  container-type: inline-size;
+  container-name: footer;
+}
+.footer a {
+  text-decoration: none;
+  color: rgb(255, 255, 0);
+}
+.footer li {
+  list-style: none;
+}
+.footer svg {
+  fill: rgb(255, 255, 0);
+}
+.footer .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+.footer h2 {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+.footer li {
+  margin-bottom: 0.5rem;
+}
+.footer__logo {
+  margin-bottom: 0.75rem;
+}
+.footer__extLinkWrap {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+@container footer (width < 44.375rem) {
+  .footer .column:first-of-type {
+    grid-row: 1/span 2;
+  }
+  .footer .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

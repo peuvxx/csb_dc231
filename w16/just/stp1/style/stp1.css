@@ -10,7 +10,7 @@ html {
 }
 
 .container {
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   max-width: 1248px;
   margin-inline: auto;
   padding-inline: 24px;
@@ -87,7 +87,7 @@ html {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .main__media img {
@@ -204,13 +204,9 @@ html {
 }
 @container footer (width < 44.375rem) {
   .footer .column:first-of-type {
-    grid-row: 1/span 2;
+    grid-row: 1 / span 2;
   }
   .footer .wrapper {
     grid-template-columns: 1fr 1fr 1fr;
   }
-}
-
-.footer__extLinkWrap:hover {
-  color: red;
 }
